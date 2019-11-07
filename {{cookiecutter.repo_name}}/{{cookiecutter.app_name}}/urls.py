@@ -1,6 +1,4 @@
-import json
-
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.urls import include
 from django.urls import path
 
@@ -10,7 +8,7 @@ from .users.urls import router
 
 def ping(request):
     func.delay()
-    return HttpResponse(json.dumps("pong!"), content_type="application/json")
+    return JsonResponse("pong!", safe=False)
 
 
 urlpatterns = [
